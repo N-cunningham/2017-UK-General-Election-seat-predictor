@@ -73,7 +73,7 @@ public class National_Vote extends JFrame{
 		
 	
 
-                String csvFile = "/Users/Niall_cunningham/Downloads/hocl-ge2015-results-summary.csv";
+                String csvFile = "/Users/Niall_cunningham/Document/GitHub/Elections/hocl-ge2015-results-summary.csv";
                 BufferedReader br = null;
                 String line = "	";
                 String cvsSplitBy = ",";
