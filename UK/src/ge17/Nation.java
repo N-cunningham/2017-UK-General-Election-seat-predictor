@@ -8,16 +8,21 @@ import java.util.ArrayList;
 
 public class Nation {
 
-	
 	protected static final int ConservateCSVColumn = 15;
 	protected static final int LabourCSVColumn = 16;
 	protected static final int LibDemCSVColumn = 17;
 	protected static final int SNPCSVColumn = 20;
 	protected static final int UKIPCSVColumn = 18;
 	protected static final int GreenCSVColumn = 19;
+	protected static final int PlaidCSVColumn = 21;
+	protected static final int DUPCSVColumn = 22;
+	protected static final int SinnFeinCSVColumn = 23;
+	protected static final int UUPCSVColumn = 25;
+	protected static final int SDLPCSVColumn = 24;
+	protected static final int AllianceCSVColumn = 26;
+	protected static final int independeantCSVColumn = 27;
 	private String name;
-	
-	
+
 	ArrayList<Party> parties = new ArrayList<Party>();
 	ArrayList<Constituency> Constituencies = new ArrayList<Constituency>();
 	ArrayList<Double> newNationalVote;
@@ -29,9 +34,9 @@ public class Nation {
 	public void setNewNationalVote(ArrayList<Double> newNationalVote) {
 		this.newNationalVote = newNationalVote;
 	}
-	
-	public Nation(String name){
-		
+
+	public Nation(String name) {
+
 		this.name = name;
 	}
 
@@ -60,25 +65,14 @@ public class Nation {
 						oldVote.add(parties.get(i).getOldVote());
 						newVote.add(((parties.get(i).getOldVote())
 								* ((newNationalVote.get(i) / parties.get(i).getOldNationalVote()))));
-						parties.get(i).setNewVote(newVote.get(i)); //This assumes noting in newVote before first add called, .get(i) mirrors the .add process but are not explicitly link, this may lead to errors in weird circumstances but shouldn't so keep an eye on this
+						parties.get(i).setNewVote(newVote.get(i));//This assumes noting in newVote before first add called, .get(i) mirrors the .add process but are not explicitly link, this may lead to errors in weird circumstances but shouldn't so keep an eye on this
 
 					}
 
-					double currentMax = 0;
-					int indexMax = 0;
-
-					for (int i = 0; i < parties.size(); i++) {
-
-						if (parties.get(i).getNewVote() > currentMax) {
-							currentMax = parties.get(i).getNewVote();
-							indexMax = i;
-						}
-
-					}
-
-					parties.get(indexMax).incSeats();
-					String winnerName = parties.get(indexMax).getName();
-					Constituency c = new Constituency(oldVote, newVote, name, vote[2], winnerName, indexMax);
+					int maxIndex = getMax();
+					parties.get(maxIndex).incSeats();
+					String winnerName = parties.get(maxIndex).getName();
+					Constituency c = new Constituency(oldVote, newVote, name, vote[2], winnerName, maxIndex);
 					Constituencies.add(c);
 
 				}
@@ -96,7 +90,7 @@ public class Nation {
 
 	void printResults() {
 
-		System.out.println( name + " Results\n");
+		System.out.println("\n" + name + " Results:");
 
 		for (int i = 0; i < parties.size(); i++) {
 
@@ -118,9 +112,22 @@ public class Nation {
 
 	}
 
+	int getMax() {
+
+		double currentMax = 0;
+		int indexMax = 0;
+
+		for (int i = 0; i < parties.size(); i++) {
+
+			if (parties.get(i).getNewVote() > currentMax) {
+				currentMax = parties.get(i).getNewVote();
+				indexMax = i;
+			}
+
+		}
+
+		return indexMax;
+
+	}
+
 }
-
-	
-
-
-

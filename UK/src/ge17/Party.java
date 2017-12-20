@@ -9,17 +9,15 @@ public class Party {
 	private int seats;
 	private int CSVColumn;
 
-
 	public Party(String name, double oldVote, double newVote, int seats, double oldNationalVote, int CSVColumn) {
 
-		
 		this.name = name;
 		this.setOldVote(oldVote);
 		this.setNewVote(newVote);
 		this.setSeats(seats);
 		this.oldNationalVote = oldNationalVote;
 		this.CSVColumn = CSVColumn;
-		
+
 	}
 
 	public int getCSVColumn() {
@@ -30,7 +28,6 @@ public class Party {
 		CSVColumn = cSVColumn;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -70,11 +67,11 @@ public class Party {
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
-	
-	public void incSeats(){
-		
+
+	public void incSeats() {
+
 		seats++;
-		
+
 	}
 
 }

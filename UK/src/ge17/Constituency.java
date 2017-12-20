@@ -3,16 +3,16 @@ package UK;
 import java.util.ArrayList;
 
 public class Constituency {
-	
+
 	private ArrayList<Double> oldVote;
-	private ArrayList<Double> newVote = new ArrayList<Double>(4);
+	private ArrayList<Double> newVote;
 	private String nation;
 	private String name;
 	private String winner;
 	private static int winnerIndex;
 
-	public Constituency(ArrayList<Double> oldVote, ArrayList<Double> newVote, String nation, String name,
-			String winner, int winnerIndex) {
+	public Constituency(ArrayList<Double> oldVote, ArrayList<Double> newVote, String nation, String name, String winner,
+			int winnerIndex) {
 
 		this.oldVote = oldVote;
 		this.newVote = newVote;
@@ -40,7 +40,7 @@ public class Constituency {
 
 			if (newVote.get(i) != newVote.get(winnerIndex)) {
 
-				res = res + "Partie " + i + ": " +newVote.get(i).intValue() + "\t";
+				res = res + "Partie " + i + ": " + newVote.get(i).intValue() + "\t";
 
 			}
 

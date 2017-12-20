@@ -7,10 +7,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Nation scotland = new Nation("Scotland");// Make sure same spelling a
-													// CSV file
-		ArrayList<Double> newScottishVote = new ArrayList<Double>();
 		Scanner scan = new Scanner(System.in);
+
+		Nation scotland = new Nation("Scotland");// Make sure same spelling as in CSV file
+		ArrayList<Double> newScottishVote = new ArrayList<Double>();
 		System.out.println("Please enter Scottish vote");
 
 		Party ScotCon = new Party("Conservatives", 0, 0, 0, 28.6, Nation.ConservateCSVColumn);
@@ -28,13 +28,9 @@ public class Main {
 			newScottishVote.add(scan.nextDouble());
 
 		}
-		
-	
 
 		Nation england = new Nation("England");// Make sure same spelling as in CSV
-		
 		ArrayList<Double> newEnglishVote = new ArrayList<Double>();
-		//Scanner scan2 = new Scanner(System.in);
 		System.out.println("Please enter English vote");
 
 		Party EngCon = new Party("Conservatives", 0, 0, 0, 45.4, Nation.ConservateCSVColumn);
@@ -54,19 +50,78 @@ public class Main {
 			newEnglishVote.add(scan.nextDouble());
 
 		}
-		
+
+		Nation wales = new Nation("Wales");// Make sure same spelling as in CSV
+		ArrayList<Double> newWelshVote = new ArrayList<Double>();
+		System.out.println("Please enter Welsh vote");
+
+		Party WelCon = new Party("Conservatives", 0, 0, 0, 33.6, Nation.ConservateCSVColumn);
+		wales.parties.add(WelCon);
+		Party WelLab = new Party("Labour", 0, 0, 0, 48.9, Nation.LabourCSVColumn);
+		wales.parties.add(WelLab);
+		Party WelLD = new Party("Lib Dems", 0, 0, 0, 4.5, Nation.LibDemCSVColumn);
+		wales.parties.add(WelLD);
+		Party WelUKIP = new Party("UKIP", 0, 0, 0, 2.0, Nation.UKIPCSVColumn);
+		wales.parties.add(WelUKIP);
+		Party WelGreen = new Party("Green", 0, 0, 0, .3, Nation.GreenCSVColumn);
+		wales.parties.add(WelGreen);
+		Party Plaid = new Party("Plaid Cymru", 0, 0, 0, 10.4, Nation.PlaidCSVColumn);
+		wales.parties.add(Plaid);
+
+		for (int i = 0; i < wales.parties.size(); i++) {
+
+			System.out.println(wales.parties.get(i).getName() + ": ");
+			newWelshVote.add(scan.nextDouble());
+
+		}
+
+		Nation NorthernIreland = new Nation("Northern Ireland");// Make sure same spelling as in CSV
+		ArrayList<Double> newNIrishVote = new ArrayList<Double>();
+		System.out.println("Please enter Northern Irish vote");
+
+		Party NICon = new Party("Conservatives", 0, 0, 0, .5, Nation.ConservateCSVColumn);
+		NorthernIreland.parties.add(NICon);
+		Party DUP = new Party("DUP", 0, 0, 0, 36.0, Nation.DUPCSVColumn);
+		NorthernIreland.parties.add(DUP);
+		Party SinnFein = new Party("Sinn Féin", 0, 0, 0, 29.4, Nation.SinnFeinCSVColumn);
+		NorthernIreland.parties.add(SinnFein);
+		Party UUP = new Party("UUP", 0, 0, 0, 10.3, Nation.UUPCSVColumn);
+		NorthernIreland.parties.add(UUP);
+		Party NIGreen = new Party("Green", 0, 0, 0, .9, Nation.GreenCSVColumn);
+		NorthernIreland.parties.add(NIGreen);
+		Party SDLP = new Party("SDLP", 0, 0, 0, 11.7, Nation.SDLPCSVColumn);
+		NorthernIreland.parties.add(SDLP);
+		Party Alliance = new Party("Alliance", 0, 0, 0, 7.9, Nation.AllianceCSVColumn);
+		NorthernIreland.parties.add(Alliance);
+
+		for (int i = 0; i < NorthernIreland.parties.size(); i++) {
+
+			System.out.println(NorthernIreland.parties.get(i).getName() + ": ");
+			newNIrishVote.add(scan.nextDouble());
+
+		}
+
 		scan.close();
 
 		scotland.setNewNationalVote(newScottishVote);
 		scotland.calculate();
 		scotland.printResults();
-		
+		scotland.printConstituencyResults();
+
 		england.setNewNationalVote(newEnglishVote);
 		england.calculate();
 		england.printResults();
-		
-		
-		// scotland.printConstituencyResults();
+		england.printConstituencyResults();
+
+		wales.setNewNationalVote(newWelshVote);
+		wales.calculate();
+		wales.printResults();
+		wales.printConstituencyResults();
+
+		NorthernIreland.setNewNationalVote(newNIrishVote);
+		NorthernIreland.calculate();
+		NorthernIreland.printResults();
+		NorthernIreland.printConstituencyResults();
 
 	}
 
