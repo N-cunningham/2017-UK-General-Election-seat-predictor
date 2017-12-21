@@ -72,7 +72,7 @@ public class Nation {
 					int maxIndex = getMax();
 					parties.get(maxIndex).incSeats();
 					String winnerName = parties.get(maxIndex).getName();
-					Constituency c = new Constituency(oldVote, newVote, name, vote[2], winnerName, maxIndex);
+					Constituency c = new Constituency(oldVote, newVote, name, vote[2], winnerName, maxIndex, parties);
 					Constituencies.add(c);
 
 				}

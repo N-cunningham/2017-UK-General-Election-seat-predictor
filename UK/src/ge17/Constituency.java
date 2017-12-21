@@ -9,10 +9,11 @@ public class Constituency {
 	private String nation;
 	private String name;
 	private String winner;
-	private static int winnerIndex;
+	private int winnerIndex;
+	ArrayList<Party> parties = new ArrayList<Party>();
 
 	public Constituency(ArrayList<Double> oldVote, ArrayList<Double> newVote, String nation, String name, String winner,
-			int winnerIndex) {
+			int winnerIndex, ArrayList<Party> parties) {
 
 		this.oldVote = oldVote;
 		this.newVote = newVote;
@@ -20,6 +21,7 @@ public class Constituency {
 		this.name = name;
 		this.winner = winner;
 		this.winnerIndex = winnerIndex;
+		this.parties = parties;
 
 	}
 
@@ -39,8 +41,10 @@ public class Constituency {
 		for (int i = 0; i < newVote.size(); i++) {
 
 			if (newVote.get(i) != newVote.get(winnerIndex)) {
+				
+				
 
-				res = res + "Partie " + i + ": " + newVote.get(i).intValue() + "\t";
+				res = res + parties.get(i).getName() + ": " + newVote.get(i).intValue() + "\t";//again name and vote mirror each others order but not explicitly linked
 
 			}
 
